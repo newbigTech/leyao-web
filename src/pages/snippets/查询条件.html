@@ -1,0 +1,44 @@
+<!-- 查询条件 -->
+<div class="_setting-bar">
+  <div class="_query-form">
+    <div class="_query-form-item">
+      <el-form :inline="true">
+        <el-form-item>
+          <el-input v-model="shopUser.userAlias" placeholder="用户名称"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input v-model="shopUser.userMobile" placeholder="用户手机号"></el-input>
+        </el-form-item>
+        <el-form-item style="width: 350px;">
+         <el-row type="flex" justify="space-between">
+           <el-col :span="12">
+             <el-date-picker
+               style="width: 168px;"
+               v-model="beginDayStSearch"
+               type="date" clearable
+               placeholder="开始日期开始"
+               :picker-options="pickerOptions0">
+             </el-date-picker>
+           </el-col>
+           <el-col :span="0" style="text-align: center; width: 15px;"> ~ </el-col>
+           <el-col :span="12">
+             <el-date-picker
+               style="width: 168px;"
+               v-model="beginDayEtSearch"
+               type="date" clearable
+               placeholder="开始日期结束"
+               :picker-options="pickerOptions1">
+             </el-date-picker>
+           </el-col>
+         </el-row> 
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="_query-form-btn">
+      <el-button @click.native.prevent="searchTableList">查 询</el-button>
+    </div>
+  </div>
+  <div class="_actions-btn">
+    <!-- <el-button type="primary">新增</el-button> -->
+  </div>
+</div>

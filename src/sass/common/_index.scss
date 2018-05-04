@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+@import "./reset-element";
+@import "./layout";
+@import "./setting-bar";
+@import "./tab";
+@import "./common";
+// @import "./windows8-loading";
+
+body {
+  #nprogress {
+    pointer-events: inherit;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 9999;
+  }
+  #nprogress .bar {
+    background-color: #ff0000;
+  }
+
+  #nprogress .spinner {
+    left: 49%;
+    top: 40%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.42);
+    border-radius: 5px;
+    &::before {
+      content: "加载中";
+      display: block;
+      position: absolute;
+      bottom: 10px;
+      left: 30px;
+      color: #d6d6d6;
+    }
+  }
+  #nprogress .spinner-icon {
+    border-top-color: #fff;
+    border-left-color: #303131;
+    animation: nprogress-spinner 600ms linear infinite;
+  }
+  ._container {
+      padding: 10px;
+  }
+  ._setting-options {
+      background-color: #F1FAFD;
+      min-height: 55px;  //最小高度和flex在ie下有bug
+      height: 55px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 8px;
+
+      // 调整element
+      .el-form-item {
+        margin-bottom: 0;
+
+        // for firefox
+        height: 36px;
+      }
+  }
+  ._setting-options-left, ._setting-options-right {
+      display: flex;
+      align-items: center;
+  }
+  ._table-container {
+      margin-top: 10px;
+  }
+
+  // 面包屑
+  ._breadcrumb {
+      position: relative;
+      z-index: auto;
+      border-bottom: 1px solid #E5E5E5;
+      background-color: #F5F5F5;
+      min-height: 41px;  // 在IE下与flex有兼容性问题
+      height: 41px;
+      display: flex;
+      align-items: center;
+  }
+
+  ._no-data{
+      border: 1px solid #e0e6ed;
+      border-radius: 4px;
+      min-height: 70px;
+      background: #F9FAFC;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // color: #5e6d82;
+      color: #FF4949;
+  }
+
+  ._pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      border: 1px solid #e0e6ed;
+      border-top: 0;
+  }
+
+  ._table-list {
+    .table { margin-bottom: 0; }
+    .table.center th,
+    .table.center td { text-align: center; }
+
+    .table>tbody>tr>td,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>td,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>thead>tr>th {
+      vertical-align: middle;
+    }
+  }
+  svg.icon { display: inline-block; width: 1em; height: 1em; stroke-width: 0; stroke: currentColor; fill: currentColor; }
+}
+
+
+body {
+  // 设置饿了么vue组件在表单中,按钮之间的间距
+  td .el-button+.el-button { margin-left: 0; }
+}

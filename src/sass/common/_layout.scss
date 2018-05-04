@@ -1,0 +1,163 @@
+
+._container-wrapper {
+  display: flex;
+}
+
+._sub-sidebar {
+  width: 246px;
+  min-height: calc( 100vh - 60px - 41px - 32px );
+  // border-right: 1px solid #d3dce6;
+  border-right: 1px solid #e5e5e5;
+}
+._sub-body {
+  flex: 1;
+}
+._padding {
+  padding: 10px;
+}
+._tab-items {
+  .el-tabs { 
+    display: block; margin-left: 0px; margin-top: -1px;
+    .el-tabs__item:first-child {
+      border-left: 0;
+    }
+  }
+  .el-tabs__header {
+    margin-bottom: 0;
+  }
+}
+
+
+// z-tree
+._z-tree ._z-tree-header{
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3c8dbc;
+  background-color: rgba(98, 168, 209, 0.25);
+  background-color: #F1FAFD;
+  color: #333;
+  font-size: 15px;
+  padding: 0 10px;
+
+  height: 41px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+td._actions {
+  .el-icon-d-arrow-right { 
+    transform: rotate(90deg);
+    font-size: 10px;
+  }
+}
+tr._open td._actions .el-icon-d-arrow-right {
+  transform: rotate(-90deg);
+}
+tr._hidden-row > td {
+  background-color: #f1f6f8;
+  border-top: 3px solid #d1e1ea!important;
+}
+
+
+// 分类图标上传
+._classify-uploader {
+  width: 500px;
+  display: flex;
+  align-items: flex-end;
+  .el-upload { width: auto; }
+  .el-upload + .el-upload {
+    margin-left: 12px;
+    ._upload-select-box {
+      width: 120px;
+      height: 100px;
+    }
+  }
+}
+
+// 上传区域
+._upload-select {
+  ._upload-select-box {
+    width: 200px; 
+    height: 160px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    background-color: #f9fafc;
+    border: 1px solid #c0ccda;
+    box-sizing: border-box;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      border-color: #20a0ff;
+    }
+
+
+    ._upload-select-icon {
+      display: flex;
+      > i{
+        font-size: 55px;
+        color: #99a9bf;
+        line-height: 55px;
+      }
+    }
+    ._upload-select-text {
+      color: #99a9bf;
+      font-size: 12px;
+      text-align: center;
+      line-height: 26px;
+    }
+
+    ._upload-select-loading {
+      position: absolute;
+      top: 1px; right: 1px; bottom: 1px; left: 1px;
+      z-index: 2;
+      background-color: rgba(0,0,0,.5);
+      color: #fff;
+      font-size: 14px;
+      display: none;
+      // display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &._loading ._upload-select-loading {
+      display: flex;
+    }
+
+    ._upload-select-preview {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      border-radius: 4px;
+      padding: 1px;
+      background: #fff;
+      text-align: center;
+      img { max-width: 100%; height: 100%; }
+      ._upload-select-cover, {
+        position: absolute;
+        top: 1px; right: 1px; bottom: 1px; left: 1px;
+        background-color: rgba(0,0,0,.5);
+        color: #fff;
+        font-size: 13px;
+        display: none;
+        // display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &:hover {
+        ._upload-select-cover { display: flex; }
+      }
+    }
+  }
+  ._upload-select-lable {
+    text-align: center;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,43 @@
+/**
+* Created by cycold on 2016-11-11
+*/
+
+// 设置element-ui 垂直tab风格
+._v-tab {
+  display: flex;
+  border: 0;
+  box-shadow: none;
+  > .el-tabs__header {
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-right: 1px solid #ddd;
+  }
+  > .el-tabs__content {
+    flex: 1;
+  } 
+  > .el-tabs__header .el-tabs__item {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    transition: none;
+    height: 50px;
+    line-height: 50px;
+  }
+  > .el-tabs__header .el-tabs__item.is-active { 
+    border: 0px; 
+    margin-right: -1px;
+  }
+}
+
+// 此wrapper 为了解决IE10-11的min-height与flex的 bug
+._v-tab_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: -15px;
+}
+
+// panel中默认有最小高度
+.panel ._v-tab{
+  min-height: calc(100vh - 50px - 41px - 32px - 60px);
+}

@@ -1,0 +1,227 @@
+<template>
+  <div class="style-demo _container">
+
+  </div>
+</template>
+
+<script>
+  import prettysize from "lib/utils/prettysize"
+  import _ from "lodash"
+  export default {
+    data() {
+      return {
+        trs: [],
+        trs2: [],
+        trs3: [],
+        trs0: [],
+        trs4: [],
+        clicked: false,
+        direction: 0
+      }
+    },
+    methods: {
+      // 大图标
+      uploadBefore(file) {
+        console.log('file.size: ', prettysize(file.size))
+        // 限制文件大小 (大图标200kb一下)
+        if (parseInt(prettysize(file.size)) > 600) {
+          this.$message.error('大图标不能超过600kb, 请重新上传!')
+          // return false
+        }
+
+        this.loading = 1
+        try {
+          this.previewPic = URL.createObjectURL(file)
+          console.log('previewPic: ', this.previewPic)
+        } catch(err) {
+          this.previewPic = false
+          console.log('URL.createObjectURL', err)
+        }
+      },
+
+      uploadSuccess(n) {
+        // console.log("n: ", n)
+        return function(response, file, fileList) {
+          console.log("success: ", n)
+          console.log(arguments)
+          if (response.success) {
+            this.loading = 0
+            this.picMD5_0 = response.result.picMD5
+          }
+        }
+      },
+
+      uploadProgress(e, f) {
+        console.log(e, f)
+      },
+
+      uploadError (err, response, file) {
+        console.log(`${file.name}上传失败!`)
+        this.loading = 2
+      },
+
+
+      createMagicCard(num = 4) {
+        let tds = []
+        for (let i = 0; i < num; i++) {
+          for (let ii = 0; ii < num; ii++) {
+            tds.push({
+              a: [ii * num, i * num],
+              b: [(ii + 1) * num, (i + 1) * num],
+              s: 0,
+              h: 0
+            })
+          }
+        }
+        return tds
+      },
+
+      createMagicCard2(num = 4) {
+        let trs = []
+        for (let i = 0; i < num; i++) {
+          let tds = []
+          for (let ii = 0; ii < num; ii++) {
+            tds.push({
+              rowspan: 1,
+              colspan: 1,
+              x: ii,
+              y: i,
+              show: true,
+              active: false,
+              locked: false,
+              selected: false
+            })
+          }
+          trs.push(tds)
+        }
+
+        return trs
+      },
+      getSubArrayByIndex(x, y, arr2, direction = 0) {
+        // if (x == 0 && y == 0) return arr2
+        let _arr2 = []
+        for (let i = 0; i < arr2.length; i++) {
+          let _arr = []
+          for (let ii = 0; ii < arr2[i].length; ii++) {
+            if (direction === 0) {
+              if (ii <= x && i <= y) _arr.push(arr2[i][ii])
+            } else if (direction === 1){
+              if (ii >= x && i >= y) _arr.push(arr2[i][ii])
+            } else if (direction ===2 ) {
+              if (ii === x && i <= y) _arr.push(arr2[i][ii])
+            } else {
+              if (ii <= x && i === y) _arr.push(arr2[i][ii])
+            }
+          }
+          if (_arr.length > 0)  _arr2.push(_arr)
+        }
+        return _arr2
+      },
+
+      tdClick(td) {
+        this.trs3 = this.getSubArrayByIndex(td.x, td.y, this.trs, 1)
+      },
+
+      liMouseenter(li) {
+        this.trs4 = this.getSubArrayByIndex(li.x, li.y, this.trs3, 0)
+
+        this.trs3.forEach(t => t.forEach(tt => {
+          tt.selected = false
+        }))
+
+        this.trs4.forEach(t => {
+          t.forEach(tt => {
+            tt.selected = true
+          })
+        })
+      }
+
+
+
+    },
+    created() {
+      // this.tds = this.createMagicCard(4)
+      this.trs = this.createMagicCard2(4)
+      this.trs2 = _.flatten(this.trs)
+      // console.log(this.trs2)
+    }
+  }
+</script>
+
+<style scope lang="sass">
+  ._magic-card {
+    display: flex;
+  }
+  ._table-magic-setting {
+    margin-left: 20px;
+    width: 250px;
+    height: 250px;
+    background: #f8f8f8;
+    ul {
+      width: 100%;
+      overflow: hidden;
+    }
+    ul li {
+      float: left;
+      margin: 1px;
+      background: #f8f8f8;
+      width: 60px;
+      height: 60px;
+      border: 1px solid #e9e9e9;
+      border-right-width: 2px;
+      border-bottom-width: 2px;
+      &.selected {
+        background: #ddeafb;
+        border-color: #c3d9ff;
+      }
+    }
+  }
+  ._table-magic-card {
+    width: 240px;
+    height: 240px;
+
+    table {
+      width: 100%;
+      height: 100%;
+      background: #f8f8f8;
+    }
+
+    tr td{
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    tr td.active {
+      background: #ddeafb;
+    }
+    tr td.locked {
+      background: #1D8CE0;
+    }
+
+    .mul {
+      width: 100%;
+      height: 100%;
+      background: #f8f8f8;
+    }
+    .mli {
+      width: 25%;
+      height: 25%;
+      float: left;
+      border: 1px solid #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ccc;
+      font-size: 12px;
+    }
+    .mli.hover {
+      background: #ddeafb;
+    }
+
+
+
+
+  }
+
+</style>

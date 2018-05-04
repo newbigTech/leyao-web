@@ -1,0 +1,57 @@
+﻿<template>
+    <div class="shop_custom_classify">
+      <!-- 面包屑 -->
+      <div class="_breadcrumb">
+          <el-breadcrumb separator=">">
+            <el-breadcrumb-item :to="{ path: '/mall' }">商城</el-breadcrumb-item>
+            <el-breadcrumb-item>充值设置</el-breadcrumb-item>
+            <el-breadcrumb-item>充值订单管理</el-breadcrumb-item>
+            <el-breadcrumb-item v-if="currentComponent === 'rechargeCardTradeList'">充值卡订单列表页面</el-breadcrumb-item>
+          </el-breadcrumb>
+      </div>
+      <!-- <transition name="fade" mode="out-in" appear> -->
+        <!-- <keep-alive> -->
+          <component :is="currentComponent" :obj="obj" @forward="forward" @reback="reback"></component>
+        <!-- </keep-alive> -->
+      <!-- </transition> -->
+    <!--遮罩层-->
+    <div v-loading="loading" class="el-loading-demo"></div>
+    </div>
+</template>
+<script>
+
+import { mapGetters } from 'vuex'
+import rechargeCardTradeList from "./rechargeCardTrade/rechargeCardTradeList"
+
+export default {
+    name: 'mall_basic_rechargeCardTrade',
+    components: { rechargeCardTradeList },
+    data() {
+      return {
+      	loading:false,//遮罩层
+        currentComponent: '',
+        obj: {}
+      }
+    },
+    computed:{
+    	...mapGetters(['supplierID'])
+    },
+
+    methods: {
+        forward(comp, data) {
+          this.currentComponent = comp
+          this.obj = data || {};
+        },
+        reback(comp, data) {
+          this.currentComponent = comp
+          this.obj = data || {}
+        },
+
+    },
+    created() {
+     	 this.currentComponent= 'rechargeCardTradeList';
+    }
+}
+</script>
+<style lang="sass">
+</style>

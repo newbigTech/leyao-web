@@ -1,0 +1,55 @@
+<!-- 图片可上传修改 -->
+<div class="_img-groups">
+  <div class="_img-groups-container">
+    <div class="_img-group">
+      <div class="_img-box">
+        <div class="_img-box-icon"><i class="el-icon-upload"></i></div>
+        <div class="_img-box-text">选择/上传图片</div>
+        <div class="_img-box-view">
+          <img src="http://192.168.1.227/pot/show/094681ed2f4d7dfffd69843ec8635676.jpg">
+          <div class="_img-box-view-mask">
+            <!-- <span>更改图片</span> -->
+            <button class="btn btn-xs btn-warning">更换</button>
+            <button class="btn btn-xs btn-danger">移除</button>
+          </div>
+        </div>
+      </div>
+      <div class="_img-group-text">LOGO大图</div>
+    </div>
+    <div class="_img-group">
+      <div class="_img-box">
+        <div class="_img-box-icon"><i class="el-icon-upload"></i></div>
+        <div class="_img-box-text">选择/上传图片</div>
+        <div class="_img-box-view">
+          <img src="http://192.168.1.227/pot/show/094681ed2f4d7dfffd69843ec8635676.jpg">
+          <div class="_img-box-view-mask">
+            <!-- <span>更改图片</span> -->
+            <button class="btn btn-xs btn-warning">更换</button>
+            <button class="btn btn-xs btn-danger">移除</button>
+          </div>
+        </div>
+      </div>
+      <div class="_img-group-text">LOGO小图</div>
+    </div>
+  </div>
+  <div class="_img-groups-info">
+    <!-- <p>图片大小不能超过500kb,格式只能为jpg,png,gif</p> -->
+    <el-alert title="图片大小不能超过500kb,格式只能为jpg,png,gif" type="info" show-icon :closable="false" style="width: 331px;"> </el-alert>
+  </div>
+</div>
+
+
+<!-- // 图片不可以修改 -->
+<div class="_img-groups">
+  <div class="_img-groups-container">
+    <div class="_img-group">
+      <div class="_img-box">
+        <div class="_img-box-view">
+          <img :src="obj.cloudShowUrl + rechargeGoodsObj.goodsPic">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

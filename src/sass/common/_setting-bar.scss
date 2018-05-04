@@ -1,0 +1,42 @@
+/**
+* Created by cycold on 2016-11-11
+*/
+
+._setting-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #F1FAFD;
+  padding: 10px 8px 0 8px;
+  // 调整element
+  .el-form-item {
+    margin-bottom: 10px;
+    width: 168px;
+
+    // for firefox
+    height: 36px;
+  }
+
+  ._query-form {
+    display: flex;
+
+    ._query-form-btn {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    @media all and (-ms-high-contrast:none) {
+      // IE10
+      ._query-form-btn { margin-bottom: 23px; }
+      // IE11
+      *::-ms-backdrop, ._query-form-btn { margin-bottom: 23px; }
+    }
+  }
+
+  ._actions-btn {
+    min-width: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+}

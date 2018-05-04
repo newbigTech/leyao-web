@@ -1,0 +1,73 @@
+/**
+* Created by cycold on 2016-07-13
+*/
+// 统一字体
+// http://www.admin10000.com/document/2971.html
+// http://www.ruanyifeng.com/blog/2014/07/chinese_fonts.html
+// Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
+// 华文细黑(Mac)，微软雅黑(Win)是这两个平台的默认中文字体
+// 具体字体设置可以参考：https://mail.qq.com
+
+// 桌面字体
+html body {  
+  // font-family: "Hiragino Sans GB", "冬青黑体", "STXihei", "华文细黑", "Microsoft YaHei","\5fae\8f6f\96c5\9ed1", "SimSun", "宋体", "Arial", "sans-serif"; 
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+// 手机字体
+@media screen and (max-width: 724px) {
+  html body { font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif; }
+}
+
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  -webkit-touch-callout: none;
+  -ms-content-zooming: none;
+  -webkit-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body, div, span, object, iframe, img, table, caption, thead, tbody,
+tfoot, tr, tr, td, article, aside, canvas, details, figure, hgroup, menu,
+nav, footer, header, section, summary, mark, audio, video {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cit, code,
+del, dfn, em, ins, q, samp, small, strong, sub, sup, b, i, hr, dl, dt, dd,
+ol, ul, li, fieldset, legend, label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+}
+
+a, a:hover, a:focus, a:active{
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+img { border: 0; }
+li, ol{ list-style: none; }
+i { font-style: normal; }
+:focus { outline: 0; }
+
+// // reset ace
+// html body {
+//   background-color: #fff;
+//   padding-bottom: 0;
+//   font-size: 16px;
+//   line-height: inherit;
+//   li>ol, li>ul { margin-left: 0; }
+// }

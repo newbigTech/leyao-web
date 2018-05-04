@@ -1,0 +1,105 @@
+body {
+  // .el-table th>div { margin-bottom: -6px; }
+
+  // element-ui中使用的before after盒子模型为content-box 而bootstrap中使用的为border-box
+  *::before, *::after { box-sizing: content-box; }
+
+
+  // 设置dialog 最小宽度
+  .shop-img-file-dialog .el-dialog--small {
+    width: 1005px;
+  }
+
+  // 计数器
+  .el-form-item .el-input-number {
+    display: block;
+  }
+
+  .is-validating .el-icon-loading { top: 0; }
+
+
+  // element-ui input placeholder 在360极速浏览器中的显示问题 设置line-height为其高度可以解决此问题
+  // .el-form-item .el-input__inner { line-height: 36px; }
+  // .el-form-item .el-input__inner[type="number"] { line-height: normal; }
+
+  // table中input高度设置为: 30px;
+  // td input { height: 30px; line-height: 30px; }
+  td input.el-input__inner { height: 30px; line-height: 22px; }
+
+  .el-form-item td input.el-input__inner { height: 30px; line-height: 22px; }
+
+
+  // .el-form input.el-input__inner { height: 36px; line-height: 36px; }
+
+  // element-ui for IE table border...
+  .el-table table {
+    border-collapse: separate;
+  }
+
+  // 增加el-select size
+  .el-select._small .el-input__inner {
+    height: 30px;
+  }
+
+  // checkbox抖动bug 对transform执行transition在某些chrome浏览器中存抖动问题
+  .el-radio__inner:after,
+  .el-checkbox__inner::after,
+  .el-select .el-input .el-input__icon {
+    transition: none;
+    transition: width .15s ease .05s;
+    transition: initial;
+  }
+
+  // 使其高度等于30px和input small时高度相同
+  .el-button--small {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .el-form { text-align: left; }
+
+  .el-dialog--1000 {
+    width: 1000px;
+  }
+
+  .el-dialog--900 {
+    width: 900px;
+  }
+
+  .el-dialog--800 {
+    width: 800px;
+  }
+
+  .el-dialog--700 {
+    width: 700px;
+  }
+
+  .el-dialog--600 {
+    width: 600px;
+  }
+
+  .el-dialog--min-1000 {
+    min-width: 1000px;
+  }
+
+  // 重置bootstrap 的focus影响
+  .el-radio input[type=checkbox], input[type=radio] {
+    margin: 0;
+    margin-top: 0;
+    line-height: normal;
+  }
+  .el-radio {
+    input[type=file]:focus, input[type=checkbox]:focus, input[type=radio]:focus {
+      outline-offset: 0px;
+      outline: 0;
+    }
+  }
+
+  // elment-ui css 1.1.6 表单内联样式缺少
+  .el-form--inline .el-form-item__content {
+      display: inline-block;
+      vertical-align: top;
+  }
+
+}
+

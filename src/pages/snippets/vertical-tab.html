@@ -1,0 +1,8 @@
+<div class="_v-tab_wrapper">
+  <el-tabs  @tab-click="tabClick" type="border-card" class="_v-tab" :active-name="tabIndex">
+    <el-tab-pane label="店铺公司">  <tab1 :model="model" @next="next" ref="tab1"></tab1></el-tab-pane>
+    <el-tab-pane label="店铺用户">  <tab2 :model="model" @next="next" ref="tab2"></tab2></el-tab-pane>
+    <el-tab-pane label="店铺设置">  <tab3 :model="model" @next="next" ref="tab3"></tab3></el-tab-pane>
+    <el-tab-pane label="售卖品类">  <tab4 :model="model" @next="next" ref="tab4"></tab4></el-tab-pane>
+  </el-tabs>
+</div>
